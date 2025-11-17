@@ -172,8 +172,8 @@
 
 #region HttpRequest
 
-//var builder = WebApplication.CreateBuilder(args);
-//var app = builder.Build();
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
 
 //app.Run(async ctx =>
 //{
@@ -202,7 +202,7 @@
 //{
 //    HttpRequest req = ctx.Request;
 //    HttpResponse res = ctx.Response;
-    
+
 //    string name = req.Query["name"].ToString();
 
 //    string sort = req.Query.TryGetValue("sort", out var f) ?
@@ -215,6 +215,56 @@
 //app.Run();
 
 
+
+
+//app.Run(async ctx =>
+//{
+//    HttpRequest req = ctx.Request;
+//    HttpResponse res = ctx.Response;
+
+//    if (!req.Headers.TryGetValue("X-Api_Key", out var apiKey))
+//    {
+//        res.StatusCode = StatusCodes.Status401Unauthorized;
+//        await res.WriteAsync("API key is required");
+//        return;
+//    }
+
+//    if (!req.Cookies.TryGetValue("auth-token", out var token))
+//    {
+//        res.StatusCode = StatusCodes.Status403Forbidden;
+//        await res.WriteAsync("Authorization failed");
+//        return;
+//    }
+
+//    await res.WriteAsync("Access granted");
+//});
+
+//app.Run();
+
+
+
+
+app.Run(async ctx =>
+{
+    HttpRequest req = ctx.Request;
+    HttpResponse res = ctx.Response;
+
+    switch(req.Path)
+    {
+        case "/api/v1/users" when req.Method == "GET":
+
+            break;
+        case "/api/v1/users" when req.Method == "POST":
+
+            break;
+        default:
+            res.StatusCode = StatusCodes.Status404NotFound;
+            await res.WriteAsync("Endpoint not found");
+            break;
+    }
+});
+
+app.Run();
 
 #endregion
 
