@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="css/main.css" rel="stylesheet" />
+    <title>Registration</title>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>REGISTRATION</h2>
+
+        <form action="/signup" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="username">Username: </label>
+                <input id="username" type="text" name="username" required />
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email: </label>
+                <input id="email" type="email" name="email" required />
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password: </label>
+                <input id="password" type="password" name="password" required />
+            </div>
+
+            <div class="form-group">
+                <label for="confirm_password">Confirm password: </label>
+                <input id="confirm_password" type="password" name="confirm_password" required />
+            </div>
+
+            <div class="form-group">
+                <label for="avatar">Avatar (max 2Mb): </label>
+                <input id="avatar" type="file" name="avatar" accept="image/*" />
+                <img id="preview" class="avatar-preview" hidden />
+            </div>
+
+            <button type="submit">Registration</button>
+        </form>
+
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

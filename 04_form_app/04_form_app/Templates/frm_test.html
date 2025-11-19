@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    
+    <form action="/handle"
+          method="post"
+          enctype="text/plain"
+          target="_self"
+          autocomplete="on"
+          novalidate
+          id="frm_registration"
+          name="frm_reg">
+
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" required />
+
+        <label for="pass">Password</label>
+        <input type="password" name="pass" id="pass" required />
+
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required />
+
+        <input type="url" />
+
+        <input type="tel" pattern="[0-9]{10}" />
+
+        <input type="number" min="10" max="99" />
+
+        <input type="range" min="10" max="99" value="50" />
+
+        <input type="date" />
+
+        <input type="time" />
+
+        <input type="color" value="#ff0000" />
+
+        <textarea rows="4" cols="50" placeholder="Enter your bio"></textarea>
+
+        <select>
+            <option value="cs">C#</option>
+            <option value="cpp">C++</option>
+            <option value="go">GO</option>
+            <option value="rst">Rust</option>
+        </select>
+
+        <fieldset>
+            <legend>Gender</legend>
+            <input type="radio" name="gender" value="male" id="male" />
+            <label for="male">MALE</label>
+            <input type="radio" name="gender" value="female" id="female" />
+            <label for="female">FEMALE</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Interests</legend>
+
+            <input type="checkbox" name="interests" value="sports" id="sports" />
+            <label for="sports">Sports</label>
+
+            <input type="checkbox" name="interests" value="music" id="music" />
+            <label for="music">Music</label>
+
+            <input type="checkbox" name="interests" value="books" id="books" />
+            <label for="books">Books</label>
+        </fieldset>
+
+
+        <label for="browser">Browser:</label>
+        <input list="browsers" id="browser" name="browser" />
+        <datalist id="browsers">
+            <option value="Chrome">
+            <option value="Opera">
+            <option value="Firefox">
+            <option value="Edge">
+            <option value="Safari">
+        </datalist>
+
+        <label for="file">File download</label>
+        <progress id="file" value="70" max="100">70%</progress>
+
+        <label for="fulel">Fuel level</label>
+        <meter id="fuel" min="0" max="100" low="33" high="66" optimum="80" value="50"></meter>
+
+        <button type="button">Button</button>
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+
+<!--VALIDATION-->
+        <input type="text"
+               required
+               minlength="2"
+               pattern="[A-Za-z]{3,}"
+               autofocus
+               placeholder="placeholder"
+               autocomplete="off"
+               />
+        <input type="number"
+               min="0"
+               max="10"
+               step="0.5"/>
+
+
+    </form>
+
+
+
+</body>
+</html>
