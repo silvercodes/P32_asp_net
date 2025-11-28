@@ -7,4 +7,8 @@
     <RootNamespace>_08_pipe</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="static\" />
+  </ItemGroup>
+
 </Project>
