@@ -228,7 +228,7 @@
 
 #region Get services
 
-//// --- Use ctor
+//// --- Use ctor           :-)
 
 //var builder = WebApplication.CreateBuilder(args);
 //builder.Services.AddSingleton<IRandomService, RandomService>();
@@ -248,49 +248,146 @@
 
 
 
-// --- Use parameters
+// --- Use parameters           :-)
 
-var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddSingleton<IRandomService, RandomService>();
-builder.Services.AddSingleton<MyService>();
+//var builder = WebApplication.CreateBuilder(args);
+//builder.Services.AddSingleton<IRandomService, RandomService>();
+//builder.Services.AddSingleton<MyService>();
 
-var app = builder.Build();
-app.MapGet("/", async(HttpContext ctx, MyService ms) =>
-{
-    await ctx.Response.WriteAsync(ms.GetVal().ToString());
-});
-app.Run();
+//var app = builder.Build();
+//app.MapGet("/", async(HttpContext ctx, MyService ms) =>
+//{
+//    await ctx.Response.WriteAsync(ms.GetVal().ToString());
+//});
+//app.Run();
 
-public class MyService
-{
-    private readonly IRandomService randomService;
-    public MyService(IRandomService randomService)
-    {
-        this.randomService = randomService;
-    }
-    public int GetVal() => randomService.NextValue(1, 99);
-}
-
-
+//public class MyService
+//{
+//    private readonly IRandomService randomService;
+//    public MyService(IRandomService randomService)
+//    {
+//        this.randomService = randomService;
+//    }
+//    public int GetVal() => randomService.NextValue(1, 99);
+//}
 
 
-public interface IRandomService
-{
-    int NextValue(int min, int max);
-}
 
-public class RandomService : IRandomService
-{
-    private readonly Random random = new Random();
-    public int NextValue(int min, int max)
-    {
-        return random.Next(min, max);
-    }
-}
+// --- Use service locator pattern          :-(
+
+//var builder = WebApplication.CreateBuilder(args);
+//builder.Services.AddSingleton<IRandomService, RandomService>();
+//var app = builder.Build();
+
+//app.MapGet("/manual", async (HttpContext ctx) =>
+//{
+//    var rnd = ctx.RequestServices.GetRequiredService<IRandomService>();
+//    await ctx.Response.WriteAsync(rnd.NextValue(1, 99).ToString());
+//});
+
+//app.Run();
+
+
+
+// --- Use scope            :-)
+//var builder = WebApplication.CreateBuilder(args);
+//builder.Services.AddSingleton<IRandomService, RandomService>();
+
+//var app = builder.Build();
+
+//using (var scope = app.Services.CreateScope())
+//{
+//    var scopedService = scope.ServiceProvider.GetRequiredService<IRandomService>();
+//    Console.WriteLine(scopedService.NextValue(1, 99));
+//}
+//app.Run();
+
+
+//public interface IRandomService
+//{
+//    int NextValue(int min, int max);
+//}
+
+//public class RandomService : IRandomService
+//{
+//    private readonly Random random = new Random();
+//    public int NextValue(int min, int max)
+//    {
+//        return random.Next(min, max);
+//    }
+//}
 
 #endregion
 
 
+#region Sevices LifeCycle
 
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddSingleton<SingletonService>();
+builder.Services.AddScoped<ScopedService>();
+builder.Services.AddTransient<TransientService>();
+
+var app = builder.Build();
+
+app.MapGet("/", (
+    SingletonService singletonService_1,    
+    SingletonService singletonService_2,
+    ScopedService scopedService_1,
+    ScopedService scopedService_2,
+    TransientService transientService_1,
+    TransientService transientService_2
+) => {
+    return new 
+    {
+        Singleton = new
+        {
+            Id1 = singletonService_1.Id,
+            Id2 = singletonService_2.Id,
+            CreatedAt = singletonService_1.CreatedAt,
+            Equals = singletonService_1.Id == singletonService_2.Id
+        },
+        Scoped = new
+        {
+            Id1 = scopedService_1.Id,
+            Id2 = scopedService_2.Id,
+            CreatedAt = scopedService_1.CreatedAt,
+            Equals = scopedService_1.Id == scopedService_2.Id
+        },
+        Transient = new
+        {
+            Id1 = transientService_1.Id,
+            Id2 = transientService_2.Id,
+            CreatedAt = transientService_1.CreatedAt,
+            Equals = transientService_1.Id == transientService_2.Id
+        },
+    };
+});
+
+app.Run();
+
+
+
+
+
+public class SingletonService
+{
+    public Guid Id { get; } = Guid.NewGuid();
+    public string CreatedAt { get; } = DateTime.Now.ToString("HH:mm:ss.fff");
+}
+
+public class ScopedService
+{
+    public Guid Id { get; } = Guid.NewGuid();
+    public string CreatedAt { get; } = DateTime.Now.ToString("HH:mm:ss.fff");
+}
+
+public class TransientService
+{
+    public Guid Id { get; } = Guid.NewGuid();
+    public string CreatedAt { get; } = DateTime.Now.ToString("HH:mm:ss.fff");
+}
+
+
+#endregion
 
 
