@@ -181,7 +181,7 @@
 //    string Query,
 //    int Page = 1,
 //    string Sort = "asc"
-//);
+//);   
 #endregion
 
 
@@ -329,6 +329,42 @@
 
 #region Query parameters
 
+using Microsoft.AspNetCore.Mvc;
+
+//var builder = WebApplication.CreateBuilder(args);
+//var app = builder.Build();
+
+// 1. Автоматическое внедрение
+// app.MapGet("/products", (int page, int count) => $"{page} - {count}");
+// app.MapGet("/products", (int page, int? count) => $"{page} - {count ?? 10}");
+
+// 2. Использование аттрибута
+// app.MapGet("/users", ([FromQuery(Name = "page_number")] int page) => $"Page: {page}");
+
+// 3. From HttpContext
+//app.MapGet("/orders", (HttpContext ctx) =>
+//{
+//    var sort = ctx.Request.Query["sort"].FirstOrDefault() ?? "id";
+//    var desc = bool.Parse(ctx.Request.Query["desc"].FirstOrDefault() ?? "false");
+
+//    return $"{sort} {desc}";
+//});
+
+// 4. Привязка к объекту
+// app.MapGet("/products", ([AsParameters] FilterOptions filter) => filter);
+
+// 5. Arrays and lists
+//app.MapGet("/find", (string[] tags) => $"Tags: {string.Join(',', tags)}");
+
+//app.Run();
+
+//public record FilterOptions
+//(
+//    string Category,
+//    double? MinPrice = null,
+//    double? MaxPrice = null,
+//    string SortBy = "name"
+//);
 
 
 

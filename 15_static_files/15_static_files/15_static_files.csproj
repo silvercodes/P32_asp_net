@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>_15_static_files</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="CustomFiles\" />
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+</Project>
