@@ -1,0 +1,8 @@
+# My custom configuration
+AppName = TextFileName
+MaxConnections = 200
+EnableLogging = true
+
+# Keys
+ApiKey = "SD-9898345987598_SECRET"
+Timeout = 00:05:30

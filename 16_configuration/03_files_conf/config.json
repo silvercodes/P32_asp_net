@@ -1,0 +1,7 @@
+{
+    "AppName": "MyApp json",
+    "Logging": {
+        "LogLevel": "Information"
+    },
+    "Timeout": 30
+}

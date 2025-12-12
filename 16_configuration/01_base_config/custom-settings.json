@@ -1,0 +1,13 @@
+{
+    "Logging": {
+        "LogLevel": {
+            "Default": "Warning"
+        }
+    },
+    "AppSettings": {
+        "Title": "My application"
+    },
+    "Database": {
+        "ConnectionString": "Server=default;Database=app_db;User=vasia;"
+    }
+}
