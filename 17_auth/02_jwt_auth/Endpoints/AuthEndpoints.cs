@@ -24,5 +24,11 @@ public static class AuthEndpoints
 
             return Results.Ok(new LoginResponse { Token = token });
         }).AllowAnonymous();
+
+        authGroup.MapGet("/protected", () => "This ISDATE protected endpoint (Jwt token only)")
+            .RequireAuthorization();
+
+        authGroup.MapGet("/admin", () => "This is admin only data")
+            .RequireAuthorization(policy => policy.RequireRole("Admin"));
     }
 }

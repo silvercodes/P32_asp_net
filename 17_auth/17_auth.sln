@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_cookie_auth", "01_cookie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_jwt_auth", "02_jwt_auth\02_jwt_auth.csproj", "{69A340EC-FE73-49F4-A8F7-EB12396B28FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_role_authorization", "03_role_authorization\03_role_authorization.csproj", "{9B7349E0-95D5-4BB8-B75D-DD712BF11A0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04_policy_authorization", "04_policy_authorization\04_policy_authorization.csproj", "{602100AB-9DF1-434D-87AE-135E7FDB06DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{69A340EC-FE73-49F4-A8F7-EB12396B28FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69A340EC-FE73-49F4-A8F7-EB12396B28FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69A340EC-FE73-49F4-A8F7-EB12396B28FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B7349E0-95D5-4BB8-B75D-DD712BF11A0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B7349E0-95D5-4BB8-B75D-DD712BF11A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B7349E0-95D5-4BB8-B75D-DD712BF11A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B7349E0-95D5-4BB8-B75D-DD712BF11A0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{602100AB-9DF1-434D-87AE-135E7FDB06DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{602100AB-9DF1-434D-87AE-135E7FDB06DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{602100AB-9DF1-434D-87AE-135E7FDB06DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{602100AB-9DF1-434D-87AE-135E7FDB06DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
