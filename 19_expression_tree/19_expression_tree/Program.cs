@@ -193,7 +193,7 @@ class Program
         var sw1 = Stopwatch.StartNew();
 
         IEnumerable<int> result = data
-            .Where(IsEven)
+            .Where(x => x % 2 == 0)
             .Where(x => x > 500000)
             .Where(x => x % 4 == 0)
             .ToList();
@@ -203,7 +203,7 @@ class Program
         var sw2 = Stopwatch.StartNew();
 
         var query = data.AsQueryable()
-            .Where(x => IsEven(x))
+            .Where(x => x % 2 == 0)
             .Where(x => x > 500000)
             .Where(x => x % 4 == 0);
 
@@ -217,7 +217,7 @@ class Program
 
     static bool IsEven(int num)
     {
-        Thread.Sleep(0);
+        // Thread.Sleep(0);
         return num % 2 == 0;
     }
 }
